@@ -1,1 +1,14 @@
-Hello Earth!
+import subprocess
+import re
+
+def analyze_conflict(code_file):
+    try:
+        with open(code_file, 'r') as f:
+            lines = f.readlines()
+        if len(lines) == 0:
+            return "No conflicts found."
+        return " ".join(lines)
+    except FileNotFoundError:
+        return "No conflicts found."
+    except Exception as e:
+        return "Error analyzing conflict: " + str(e)
